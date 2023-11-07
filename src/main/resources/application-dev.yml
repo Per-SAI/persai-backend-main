@@ -1,0 +1,15 @@
+spring:
+  config:
+    import: env.yml
+  datasource:
+    url: jdbc:postgresql://${DEV_DB_HOST}:5432/persai
+    username: ${DEV_DB_USERNAME}
+    password: ${DEV_DB_PASSWORD}
+
+server:
+  error:
+    include-message: always
+
+API-DOC-SERVER-DOMAIN-1: ${DEV_SERVER_DOMAIN_1}
+API-DOC-SERVER-DOMAIN-2: ${DEV_SERVER_DOMAIN_2}
+CRONJOB-SERVER-DOMAIN: ${DEV_CRONJOB_SERVER_DOMAIN}

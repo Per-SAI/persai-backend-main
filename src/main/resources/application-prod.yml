@@ -1,0 +1,15 @@
+spring:
+  config:
+    import: env.yml
+  datasource:
+    url: jdbc:postgresql://${AWS_DB_HOST}:5432/persai
+    username: ${AWS_DB_USERNAME}
+    password: ${AWS_DB_PASSWORD}
+
+server:
+  error:
+    include-message: always
+
+API-DOC-SERVER-DOMAIN-1: ${AWS_SERVER_DOMAIN_1}
+API-DOC-SERVER-DOMAIN-2: ${AWS_SERVER_DOMAIN_2}
+CRONJOB-SERVER-DOMAIN: ${AWS_CRONJOB_SERVER_DOMAIN}

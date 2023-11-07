@@ -1,0 +1,93 @@
+---
+spring:
+  profiles:
+    active: dev
+    include: dev
+---
+#spring:
+#  profiles:
+#    active: prod
+#    include: prod
+---
+spring:
+  config:
+    import: env.yml
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        #        show_sql: true
+        format_sql: true
+    hibernate:
+      ddl-auto: validate
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_APP_USERNAME}
+    password: ${EMAIL_APP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  image:
+    size: 800
+  ai:
+    openai:
+      api-key: ${OPEN-AI-API-KEY}
+
+logging:
+  level:
+    root: INFO
+    com.aladin: INFO
+
+springdoc:
+  swagger-ui:
+    path: /persai.html
+    operations-sorter: alpha
+    csrf:
+      enabled: false
+
+google:
+  client-id: ${DEV_GOOGLE_CLIENT_ID}
+  ios-client-id: ${IOS_GOOGLE_CLIENT_ID}
+  other-client-id: ${OTHER_GOOGLE_CLIENT_ID}
+
+jwt:
+  access-secret-key: ${JWT_ACCESS_SECRET_KEY}
+  refresh-secret-key: ${JWT_REFRESH_SECRET_KEY}
+  access-expire-time-in-minutes: 120
+  refresh-expire-time-in-minutes: 1440
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+    stack:
+      auto: false
+    s3:
+      bucket:
+        name: ${AWS_S3_BUCKET_NAME}
+
+gpt:
+  model: ${GPT-MODEL}
+  max-tokens: ${MAX-TOKENS}
+  host: ${OPEN-AI-API-HOST}
+  api-key: ${OPEN-AI-API-KEY}
+
+server:
+  port: 8080
+  host: ${API-DOC-SERVER-DOMAIN-2}
+  cron-job:
+    host: ${CRONJOB-SERVER-DOMAIN}
+    secret-key: ${CRONJOB_SERVER_SECRET_KEY}
+  cors-urls: ${CORS_URLS}
+
